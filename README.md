@@ -1,4 +1,8 @@
 # serverless-iot-offline
+[![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
+[![npm](https://img.shields.io/npm/v/serverless-iot-offline.svg)](https://www.npmjs.com/package/serverless-iot-offline)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
+
 Serverless plugin that emulates AWS IoT service. Manages topic subscriptions, lifecycle events, thing shadow management and rule engine with limited SQL syntax support.
 
 ## Prerequisites
