@@ -74,7 +74,7 @@ Example of `shadows.json` file which will seed redis with 2 shadows:
 ## Contributing
 
 Local implementation of AWS IoT service has a minimum of SQL syntax support and primarily we need help with that.  
-To get a better understanding of what SQL syntax we are supporting see [documentation](./iotSql/README.md) and [sqlSyntax.test.js](./__tests__/sqlSyntax.test.js) file.  
+To get a better understanding of what SQL syntax we are supporting see [documentation](./iotSql/README.md) and [testData.js](./testData.js) file.  
 Checkout [contributing guidelines](./CONTRIBUTING.md).
 
 ## Credits and inspiration

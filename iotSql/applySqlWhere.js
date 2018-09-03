@@ -33,21 +33,17 @@ const applyWhereClause = (message, clause, log, fnName) => {
     return false
   }
 
-  if (clause === 'NOT isUndefined(state.desired.preferences)') {
-    return typeof _.get(payload, 'state.desired.preferences') !== 'undefined'
-  } else {
-    whereClauseAst.forEach((block) => {
-      if (Array.isArray(block)) {
-        condition += '('
-        block.forEach((item) => {
+  whereClauseAst.forEach((block) => {
+    if (Array.isArray(block)) {
+      condition += '('
+      block.forEach((item) => {
           condition += buildCondition(item)
-        })
-        condition += ')'
-      } else {
-        condition += `${buildCondition(block)}`
-      }
-    })
-  }
+      })
+      condition += ')'
+    } else {
+      condition += `${buildCondition(block)}`
+    }
+  })
 
   try {
     const result = eval(condition)
