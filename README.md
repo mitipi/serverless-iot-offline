@@ -3,7 +3,7 @@ Serverless plugin that emulates AWS IoT service. Manages topic subscriptions, li
 
 ## Prerequisites
 
-[Redis](https://redis.io/) installed.
+[Redis](https://redis.io/) installed.  
 Serverless framework 1.x
 
 ## Installation
@@ -73,7 +73,9 @@ Example of `shadows.json` file which will seed redis with 2 shadows:
 
 ## Contributing
 
-To do...
+Local implementation of AWS IoT service has a minimum of SQL syntax support and primarily we need help with that.  
+To get a better understanding of what SQL syntax we are supporting see [documentation](./iotSql/README.md) and [sqlSyntax.test.js](./__tests__/sqlSyntax.test.js) file.  
+Checkout [contributing guidelines](./CONTRIBUTING.md).
 
 ## Credits and inspiration
 This plugin was inspired by [Tradle](https://github.com/tradle)'s [serverless-iot-local](https://github.com/tradle/serverless-iot-local) project
