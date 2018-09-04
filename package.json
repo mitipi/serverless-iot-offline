@@ -29,6 +29,9 @@
     "mqtt-match": "^2.0.1",
     "redis": "^2.8.0"
   },
+  "peerDependencies": {
+    "serverless-offline": "*"
+  },
   "jest": {
     "testMatch": [
       "**/__tests__/*.js"
