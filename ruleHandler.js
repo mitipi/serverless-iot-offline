@@ -58,7 +58,8 @@ module.exports = (slsOptions, slsService, serverless, log) => {
   })
 
   // search in resources for Iot rule events
-  Object.keys(slsService.resources.Resources).forEach(key => {
+  const resources = _.get(slsService, 'resources.Resources', {})
+  Object.keys(resources).forEach(key => {
     const ruleConf = _.get(slsService.resources.Resources[key], 'Properties.TopicRulePayload')
 
     if (!ruleConf || ruleConf.RuleDisabled === "true") {
