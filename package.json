@@ -1,6 +1,6 @@
 {
   "name": "serverless-iot-offline",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Start AWS IoT service offline. Manages topic subscriptions, lifecycle events, thing shadow management and rule engine with limited SQL syntax support.",
   "main": "index.js",
   "scripts": {
