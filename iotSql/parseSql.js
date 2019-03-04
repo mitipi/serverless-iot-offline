@@ -1,6 +1,6 @@
 const BASE64_PLACEHOLDER = '*b64'
 const SQL_REGEX = /^SELECT (.*) FROM '([^']+)'/
-const SELECT_PART_REGEX = /^(.*?)(?: as (.*))?$/
+const SELECT_PART_REGEX = /^(.*?)(?: as (.*))?$/i
 const WHERE_REGEX = /WHERE (.*)/
 
 const parseSelect = sql => {
