@@ -55,7 +55,9 @@ custom:
       db: 12
     # path to initial shadows
     # it is used to seed redis database with preconfigured shadows
-    shadows: ./shadows.json
+    seedShadows: ./shadows.json
+    # optional seedPolicies path
+    seedPolicies: ./policy.json
 ```
 Example of `shadows.json` file which will seed redis with 2 shadows:
 ```json
