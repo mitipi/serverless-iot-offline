@@ -42,6 +42,7 @@ module.exports.seedShadows = (seedPath, redisClient) => {
 }
 
 module.exports.seedPolicies = (seedPath, redisClient) => {
+  if(!seedPath) return
   const location = path.join(process.cwd(), seedPath)
   fs.exists(location, (exists) => {
     if (exists) {
