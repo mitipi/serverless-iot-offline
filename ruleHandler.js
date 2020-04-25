@@ -1,5 +1,5 @@
 const functionHelper = require('serverless-offline/src/functionHelper')
-const createLambdaContext = require('serverless-offline/src/createLambdaContext')
+const createLambdaContext = require('serverless-offline/src/LambdaContext')
 const path = require('path')
 const {parseSelect} = require('./iotSql/parseSql')
 const {applySelect} = require('./iotSql/applySqlSelect')
