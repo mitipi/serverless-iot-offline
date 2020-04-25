@@ -27,6 +27,8 @@ plugins:
   - serverless-offline
 ```
 
+> If you are using `serverless-offline` `v5.12.1` and below, use `serverless-iot-offline@0.1.4` for comaptibility.
+
 ## Usage and command line options
 
 Make sure `redis-server` is started.  
