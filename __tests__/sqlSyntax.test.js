@@ -1,7 +1,7 @@
 const {parseSelect} = require('../iotSql/parseSql')
 const {applySelect} = require('../iotSql/applySqlSelect')
 const {applyWhereClause} = require('../iotSql/applySqlWhere')
-const {topic, timestamp, clientid, accountid} = require('../iotSql/sqlFunctions')
+const {topic, timestamp, clientid, accountid, encode} = require('../iotSql/sqlFunctions')
 const {sqlParseTestData} = require('../testData')
 
 const log = () => {}
@@ -29,7 +29,9 @@ describe('SQL parser', () => {
         context: {
           topic: (index) => topic(index, parsed.topic),
           clientid: () => clientid(parsed.topic),
-          accountid: () => accountid()
+          timestamp: () => timestamp(),
+          accountid: () => accountid(),
+          encode: (field, encoding) => encode(payload, field, encoding)
         }
       })).toEqual(expected.event)
     })

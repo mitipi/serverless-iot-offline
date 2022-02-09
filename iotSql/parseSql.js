@@ -1,6 +1,6 @@
-const BASE64_PLACEHOLDER = '*b64'
 const SQL_REGEX = /^SELECT (.*) FROM '([^']+)'/
 const SELECT_PART_REGEX = /^(.*?)(?: as (.*))?$/i
+const FIELDS_REGEX = /((\w+[\n\r\s]*\([^)]*\))|([^\n\r\s(,]+))([\n\r\s]+as[\n\r\s]+\w*)?/g
 const WHERE_REGEX = /WHERE (.*)/
 
 const parseSelect = sql => {
@@ -8,12 +8,7 @@ const parseSelect = sql => {
   const [whereClause] = (sql.match(WHERE_REGEX) || []).slice(1)
 
   return {
-    select: select
-    // hack
-      .replace("encode(*, 'base64')", BASE64_PLACEHOLDER)
-      .split(',')
-      .map(s => s.trim())
-      .map(parseSelectPart),
+    select: select.match(FIELDS_REGEX).map(parseSelectPart),
     topic,
     whereClause
   }
