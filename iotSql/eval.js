@@ -1,20 +1,15 @@
-const evalInContext = (js, context) => {
-  const {clientid, topic, accountid, timestamp} = context
+const evalInContext = (expr, context) => {
+  let [func, fields] = expr.match(/(\w+)\((.*)\)/).slice(1, 3);
+  fields = fields
+    ? fields.split(",").map((f) => f.trim().replace(/['"]+/g, ""))
+    : [];
+
   try {
-    return eval(js)
+    return context[func](...fields);
   } catch (err) {
-    debugger
-    console.log(`failed to evaluate: ${js}`)
-    throw err
+    debugger;
+    console.log(`failed to evaluate: ${expr}`);
+    throw err;
   }
-}
-
-const encode = (data, encoding) => {
-  if (encoding !== 'base64') {
-    throw new Error('AWS Iot SQL encode() function only supports base64 as an encoding')
-  }
-
-  return data.toString(encoding)
-}
-
-module.exports = evalInContext
+};
+module.exports = evalInContext;

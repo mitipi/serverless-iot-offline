@@ -85,5 +85,39 @@ module.exports.sqlParseTestData = [
         clientid: 'test_client'
       }
     }
+  },
+  {
+    sql: `SELECT encode(*, 'base64') as encodedPayload FROM '$aws/things/sn:123/shadow/update'`,
+    payload: `{"state": {"reported": {"mode": "STAND_BY"}}}`,
+    expected: {
+      parsed: {
+        select: [{ field: "encode(*, 'base64')", alias: "encodedPayload" }],
+        topic: "$aws/things/sn:123/shadow/update",
+      },
+      whereEvaluatesTo: true,
+      event: {
+        encodedPayload:
+          "eyJzdGF0ZSI6IHsicmVwb3J0ZWQiOiB7Im1vZGUiOiAiU1RBTkRfQlkifX19",
+      },
+    },
+  },
+  {
+    sql: `SELECT encode(state.reported.mode, 'base64') as encodedPayload FROM '$aws/things/sn:123/shadow/update'`,
+    payload: `{"state": {"reported": {"mode": "STAND_BY"}}}`,
+    expected: {
+      parsed: {
+        select: [
+          {
+            field: "encode(state.reported.mode, 'base64')",
+            alias: "encodedPayload",
+          },
+        ],
+        topic: "$aws/things/sn:123/shadow/update",
+      },
+      whereEvaluatesTo: true,
+      event: {
+        encodedPayload: "U1RBTkRfQlk=",
+      },
+    },
   }
 ]
