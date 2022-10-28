@@ -1,0 +1,28 @@
+name: Build-Publish
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  test-and-lint:
+    runs-on: [ubuntu-latest]
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies 👨🏻‍💻
+        uses: bahmutov/npm-install@v1
+      
+      - name: Publish package
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+    
