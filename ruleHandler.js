@@ -9,7 +9,7 @@ const { fillSubstitutionTemplates } = require('./iotSql/substitutionTemplates')
 const mqtt = require('mqtt')
 const mqttMatch = require('mqtt-match')
 const _ = require('lodash')
-const {topic, accountid, clientid, timestamp} = require('./iotSql/sqlFunctions')
+const {topic, accountid, clientid, timestamp, encode} = require('./iotSql/sqlFunctions')
 
 /**
  * Searches serverless.yml for functions configurations.
@@ -172,7 +172,8 @@ module.exports = (slsOptions, slsService, serverless, log) => {
               topic: (index) => topic(index, topicUrl),
               clientid: () => clientid(topicUrl),
               timestamp: () => timestamp(),
-              accountid: () => accountid()
+              accountid: () => accountid(),
+              encode: (field, encoding) => encode(message, field, encoding)
             }
           })
 
